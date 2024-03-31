@@ -2073,8 +2073,10 @@ class MysqliDb
             }
             if ($val === null) {
                 $val = 'NULL';
+		$newStr .= substr($str, 0, $pos) . $val;
+            }else{
+                $newStr .= substr($str, 0, $pos) . "'" . $val . "'";
             }
-            $newStr .= substr($str, 0, $pos) . "'" . $val . "'";
             $str = substr($str, $pos + 1);
         }
         $newStr .= $str;
